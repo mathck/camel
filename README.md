@@ -1,127 +1,61 @@
-# Welcome to Apache Camel
+# Spring Boot Example
 
-[Apache Camel](http://camel.apache.org/) is a powerful open source integration framework based on known
-Enterprise Integration Patterns with powerful Bean Integration.
 
 ### Introduction
+This example shows how to work with the simple Camel application based on the Spring Boot.
 
-Camel lets you create the Enterprise Integration Patterns to implement routing
-and mediation rules in either a Java based Domain Specific Language (or Fluent API),
-via Spring or Blueprint based Xml Configuration files, or via the Scala DSL.
-This means you get smart completion of routing rules in your IDE whether
-in your Java, Scala or XML editor.
+The example generates messages using timer trigger, writes them to the standard output and the mock
+endpoint (for testing purposes).
 
-Apache Camel uses URIs so that it can easily work directly with any kind of
-transport or messaging model such as HTTP, ActiveMQ, JMS, JBI, SCA, MINA
-or CXF together with working with pluggable Data Format options.
-Apache Camel is a small library which has minimal dependencies for easy embedding
-in any Java application. Apache Camel lets you work with the same API regardless
-which kind of transport used, so learn the API once and you will be able to
-interact with all the Components that is provided out-of-the-box.
+This example exposes Jolokia API and Spring Boot actuators endpoints (like metrics) via the webmvc endpoint. We consider
+this as the best practice - Spring Boot applications with these API exposed can be easily monitored and managed by the
+3rd parties tools.
 
-Apache Camel has powerful Bean Binding and integrated seamless with
-popular frameworks such as Spring, Blueprint and Guice.
+We recommend to package your application as a fat WAR. Fat WARs can be executed just as regular fat jars, but you can also
+deploy them to the servlet containers like Tomcat. Fat WAR approach gives you the deployment flexibility, so we highly
+recommend it.
 
-Apache Camel has extensive testing support allowing you to easily
-unit test your routes.
+### Build
+You will need to compile this example first:
 
-Apache Camel can be used as a routing and mediation engine for the
-following projects:
+	mvn install
 
-* Apache ServiceMix which is the most popular and powerful distributed open source ESB, JBI and OSGi container
-* Apache ActiveMQ which is the most popular and powerful open source message broker
-* Apache CXF which is a smart web services suite (JAX-WS and JAX-RS)
-* Apache Karaf which is a small OSGi based runtime which applications can be deployed
-* Apache MINA a networking framework
+### Run
+To run the example type
+
+	mvn spring-boot:run
+
+You can also execute the fat WAR directly:
+
+	java -jar target/camel-example-spring-boot.war
+
+You will see the message printed to the console every second.
+
+To stop the example hit <kbd>ctrl</kbd>+<kbd>c</kbd>
+
+### Remote Shell
+
+The example ships with remote shell enabled which includes the Camel commands as well, so you can SSH into the running Camel application and use the camel commands to list / stop routes etc.
+
+You can SSH into the JVM using
+
+    ssh -p 2000 user@localhost
+
+And then use `password` when the server will prompt to encode the password.
 
 
-## Getting Started
+### Documentation
 
-To help you get started, try the following links:
+This example is documented at <http://camel.apache.org/spring-boot-example.html>
 
-**Getting Started**
-  
-<http://camel.apache.org/getting-started.html>
+### Forum, Help, etc
 
-**Building**
-  
-<http://camel.apache.org/building.html>
+If you hit an problems please let us know on the Camel Forums
+	<http://camel.apache.org/discussion-forums.html>
 
-**Contributions**
+Please help us make Apache Camel better - we appreciate any feedback you may
+have.  Enjoy!
 
-We welcome contributions of all kinds, for details of how you can help
-  
-<http://camel.apache.org/contributing.html>
 
-Please refer to the website for details of finding the issue tracker, 
-email lists, wiki or IRC channel
-  
-Wiki: <http://camel.apache.org/>
 
-IRC: <http://camel.apache.org/irc-room.html>
-
-Mailing list: <http://camel.apache.org/mailing-lists.html>
-
-**Support**
-
-If you need support or help then read this page first
-  
-<http://camel.apache.org/support.html>
-
-**Forum**
-
-If you hit any problems please talk to us on the Camel Forums
-  
-<http://camel.apache.org/discussion-forums.html>
-
-Please help us make Apache Camel better - we appreciate any feedback 
-you may have.
-
-Enjoy!
-
------------------
 The Camel riders!
-
-# Licensing
-
-This software is licensed under the terms you may find in the file
-named `LICENSE.txt` in this directory.
-   
-This distribution includes cryptographic software.  The country in
-which you currently reside may have restrictions on the import,
-possession, use, and/or re-export to another country, of
-encryption software.  BEFORE using any encryption software, please
-check your country's laws, regulations and policies concerning the
-import, possession, or use, and re-export of encryption software, to
-see if this is permitted.  See <http://www.wassenaar.org/> for more
-information.
-
-The U.S. Government Department of Commerce, Bureau of Industry and
-Security (BIS), has classified this software as Export Commodity
-Control Number (ECCN) 5D002.C.1, which includes information security
-software using or performing cryptographic functions with asymmetric
-algorithms.  The form and manner of this Apache Software Foundation
-distribution makes it eligible for export under the License Exception
-ENC Technology Software Unrestricted (TSU) exception (see the BIS
-Export Administration Regulations, Section 740.13) for both object
-code and source code.
-
-The following provides more details on the included cryptographic
-software:
-
-* **camel-ahc** can be configured to use https
-* **camel-crypto** can be used for secure communications
-* **camel-cxf** can be configured for secure communications
-* **camel-ftp** can be configured for secure communications
-* **camel-http** can be configured to use https
-* **camel-http4** can be configured to use https
-* **camel-infinispan** can be configured for secure communications
-* **camel-jasypt** can be used for secure communications
-* **camel-jetty** can be configured to use https
-* **camel-mail** can be configured for secure communications
-* **camel-nagios** can be configured for secure communications
-* **camel-netty-http** can be configured to use https
-* **camel-netty4-http** can be configured to use https
-* **camel-undertow** can be configured to use https
-* **camel-xmlsecurity** can be configured for secure communications
-
